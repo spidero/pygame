@@ -25,8 +25,7 @@ boxrect = box.get_rect()
 
 pygame.display.set_caption ('Gra opis')
 
-ballrect.move (start_poz)
-
+ballrect = ballrect.move(width/2,height/2)
 
 while 1:
     for event in pygame.event.get():
