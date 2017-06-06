@@ -3,7 +3,7 @@ import sys, pygame, time
 pygame.init()
 
 size = width, height = 640, 480
-start_poz = [100,100]
+start_poz = [5,5]
 speed = [1, 1]
 left = [-1, 0]
 right = [1, 0]
@@ -13,6 +13,9 @@ white = 255, 255, 255
 point = 0
 
 screen = pygame.display.set_mode(size)
+
+font = pygame.font.SysFont("comicsansms", 72)
+
 
 ball = pygame.image.load("ball.png")
 ballrect = ball.get_rect()
@@ -49,8 +52,15 @@ while 1:
     if ballrect.top < 0 or ballrect.bottom > height:
         speed[1] = -speed[1]
 
+    if ballrect.top < 0:
+#        speed[1] = -speed[1]
+        point += 1
+
+    text = font.render(str(point), True, (0, 128, 0))
+
     screen.fill(white)
     screen.blit(ball, ballrect)
     screen.blit(box, boxrect)
+    screen.blit(text, start_poz)
     pygame.display.flip()
 
